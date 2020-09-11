@@ -1,0 +1,17 @@
+= Social
+:toc: left
+:toclevels: 2
+
+* 2 emotions
+** Happiness
+** Annoyed
+* 1 attitude
+** opinion
+* 2 actions
+** Compliment
+*** cause Happiness
+** Insult
+*** cause Annoyance
+* rules
+** opinion >= 0 && cause Happiness -> Happiness
+** opinion < 0 && cause Annoyance -> Happiness

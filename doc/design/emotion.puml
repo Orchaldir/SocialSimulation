@@ -1,0 +1,34 @@
+@startuml
+
+hide empty members
+
+package character {
+
+package emotion {
+
+class EmotionType {
+  String name
+  bool isPositive
+}
+
+class Emotion {
+  int strength
+  int duration
+}
+
+class Mood {
+  List<Emotion> getAllEmotions()
+  Emotion getDominantEmotion()
+}
+
+}
+
+class Character
+
+}
+
+Emotion "1" *-- "1"  EmotionType
+Mood "1" *-- "*"  Emotion
+Character "1" *-- "1"  Mood
+
+@enduml
