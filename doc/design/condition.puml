@@ -1,0 +1,36 @@
+@startuml
+
+hide empty members
+
+package social {
+
+package condition {
+
+interface Condition {
+  bool evaluate()
+}
+
+class AttitudeCondition {
+  AttitudeType type
+  int threshold
+  bool checkForBigger
+}
+
+class CauseEmotionCondition {
+  EmotionType type
+}
+
+class HasEmotionCondition {
+  EmotionType type
+}
+
+}
+
+}
+
+Condition <|-- AttitudeCondition
+Condition <|-- CauseEmotionCondition
+Condition <|-- HasEmotionCondition
+
+
+@enduml

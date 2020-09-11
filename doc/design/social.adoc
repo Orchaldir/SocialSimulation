@@ -2,16 +2,18 @@
 :toc: left
 :toclevels: 2
 
-* 2 emotions
+* emotions
 ** Happiness
 ** Annoyed
-* 1 attitude
+* attitude
 ** opinion
-* 2 actions
+* conditions
+** attitude comparator X
+* actions
 ** Compliment
 *** cause Happiness
 ** Insult
 *** cause Annoyance
-* rules
-** opinion >= 0 && cause Happiness -> Happiness
-** opinion < 0 && cause Annoyance -> Happiness
+* utility rules
+** opinion >= 0 && cause Happiness -> increase utility
+** opinion < 0 && cause Annoyance -> decrease utility

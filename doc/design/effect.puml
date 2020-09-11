@@ -1,0 +1,28 @@
+@startuml
+
+hide empty members
+
+package social {
+
+package effect {
+
+interface Effect
+
+class CauseEmotion {
+  Emotion emotion
+}
+
+class ModifyAttitude {
+  AttitudeType type
+  int value
+}
+
+}
+
+}
+
+Effect <|-- CauseEmotion
+Effect <|-- ModifyAttitude
+
+
+@enduml
