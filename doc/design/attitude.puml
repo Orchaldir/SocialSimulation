@@ -1,0 +1,37 @@
+@startuml
+
+hide empty members
+
+package character {
+
+package attitude {
+
+class AttitudeType {
+  String name
+}
+
+class Attitude {
+  int strength
+}
+
+class AttitudeComponent {
+  Map<CharacterId,List<Attitude>> getAllAttitudes()
+  List<Attitude> getAttitudes(CharacterId id)
+  Map<CharacterId,Attitude> getAttitudes(AttitudeType type)
+  int getAttitude(CharacterId id, AttitudeType type)
+}
+
+}
+
+class CharacterId
+
+class Character
+
+}
+
+Attitude *--  AttitudeType
+AttitudeComponent "1" *-- "*"  Attitude
+Character *--  AttitudeComponent
+CharacterId *--  Character
+
+@enduml

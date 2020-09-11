@@ -27,8 +27,8 @@ class Character
 
 }
 
-Emotion "1" *-- "1"  EmotionType
+Emotion *--  EmotionType
 Mood "1" *-- "*"  Emotion
-Character "1" *-- "1"  Mood
+Character *--  Mood
 
 @enduml
