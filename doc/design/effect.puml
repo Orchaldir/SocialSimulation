@@ -6,13 +6,17 @@ package social {
 
 package effect {
 
-interface Effect
+interface Effect {
+  Context applyTo(Context context)
+}
 
 class CauseEmotion {
+  Role role
   Emotion emotion
 }
 
 class ModifyAttitude {
+  Role from, toward
   AttitudeType type
   int value
 }

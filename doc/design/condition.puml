@@ -29,25 +29,11 @@ class HasEmotionCondition {
 
 }
 
-enum Role {
-  SPEAKER
-  TARGET
-  OBSERVER
 }
 
-class Context {
-  Action action
-  Map<Role,Character> roles
-}
-
-}
-
-Condition -left- Context
 Condition <|-- AttitudeCondition
 Condition <|-- CauseEmotionCondition
 Condition <|-- HasEmotionCondition
-
-Context -- Role
 
 
 @enduml
