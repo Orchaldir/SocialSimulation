@@ -1,0 +1,50 @@
+@startuml
+
+hide empty members
+
+package social {
+
+package effect {
+
+interface Effect
+
+}
+
+package action {
+
+class Action {
+  Utility calculateUtility()
+}
+
+class Utility {
+  int utility
+  List<UtilityRule> triggeredRules
+}
+
+}
+
+package rule {
+
+class UtilityRule {
+  String description
+  int modifier
+  bool isTriggered()
+  int getUtilityModifier()
+}
+
+}
+
+package condition {
+
+interface Condition
+
+}
+
+}
+
+Action "1" *-- "*"  UtilityRule
+Action "1" *-- "*"  Effect
+UtilityRule "1" *-left- "*"  Condition
+
+
+@enduml
