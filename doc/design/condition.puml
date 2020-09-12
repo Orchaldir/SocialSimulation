@@ -7,30 +7,47 @@ package social {
 package condition {
 
 interface Condition {
-  bool evaluate()
+  bool evaluate(Context context)
 }
 
 class AttitudeCondition {
+  Role from, toward
   AttitudeType type
   int threshold
   bool checkForBigger
 }
 
 class CauseEmotionCondition {
+  Role role
   EmotionType type
 }
 
 class HasEmotionCondition {
+  Role role
   EmotionType type
 }
 
 }
 
+enum Role {
+  SPEAKER
+  TARGET
+  OBSERVER
 }
 
+class Context {
+  Action action
+  Map<Role,Character> roles
+}
+
+}
+
+Condition -left- Context
 Condition <|-- AttitudeCondition
 Condition <|-- CauseEmotionCondition
 Condition <|-- HasEmotionCondition
+
+Context -- Role
 
 
 @enduml
