@@ -10,9 +10,11 @@ version = "0.1.0-SNAPSHOT"
 repositories {
     mavenCentral()
 }
+
 dependencies {
     testImplementation(kotlin("test-junit5"))
 }
+
 tasks.withType<KotlinCompile>() {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_14.toString()
 }
