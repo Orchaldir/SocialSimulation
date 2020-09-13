@@ -1,7 +1,6 @@
-import core.test.testFunctionInCore
+import social.data.character.Character
 
-fun main(args: Array<String>) {
-    println("Hello World!")
-
-    testFunctionInCore("hallo")
+fun main() {
+    val character = Character(99)
+    println("Hello $character")
 }
