@@ -7,7 +7,7 @@ package social {
 package effect {
 
 interface Effect {
-  Context applyTo(Context context)
+  Result applyTo(Context context, Result result)
 }
 
 }
@@ -16,7 +16,7 @@ package action {
 
 class Action {
   int calculateUtility(Context context)
-  Context applyEffects(Context context)
+  Result applyEffects(Context context)
 }
 
 enum Role {
@@ -28,6 +28,10 @@ enum Role {
 class Context {
   Action action
   Map<Role,Character> roles
+}
+
+class Result {
+  Map<CharacterId,Character> updatedCharacters
 }
 
 }
@@ -53,9 +57,10 @@ interface Condition {
 
 }
 
-Action "1" *-left- "*"  UtilityRule
-Action "1" *-up- "*"  Effect
-UtilityRule "1" *-- "*"  Condition
+Action "1" *-left- "*" UtilityRule
+Action "1" *-up- "*" Effect
+Action -[hidden]- Result
+UtilityRule "1" *-- "*" Condition
 
 Context -- Role
 

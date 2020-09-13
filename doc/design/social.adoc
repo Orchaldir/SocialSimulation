@@ -11,9 +11,9 @@
 ** attitude comparator X
 * actions
 ** Compliment
-*** cause Happiness
+*** increase opinion
 ** Insult
-*** cause Annoyance
+*** decrease opinion
 * utility rules
 ** opinion >= 0 && cause Happiness -> increase utility
 ** opinion < 0 && cause Annoyance -> decrease utility
