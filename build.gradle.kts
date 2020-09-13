@@ -3,8 +3,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.4.10"
 }
-group = "me.admin"
-version = "1.0-SNAPSHOT"
+
+group = "at.orchaldir"
+version = "0.1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -13,5 +14,5 @@ dependencies {
     testImplementation(kotlin("test-junit5"))
 }
 tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_14.toString()
 }
