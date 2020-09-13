@@ -2,6 +2,8 @@
 :toc: left
 :toclevels: 2
 
+== Content
+
 * emotions
 ** Happiness
 ** Annoyed
@@ -17,3 +19,19 @@
 * utility rules
 ** opinion >= 0 && cause Happiness -> increase utility
 ** opinion < 0 && cause Annoyance -> decrease utility
+
+== Packages
+
+* core
+** interface
+*** api
+*** spi
+**** ActionRepository
+**** CharacterRepository
+** data
+*** action
+**** condition
+**** effect
+**** rule
+*** character
+* app
