@@ -20,8 +20,8 @@ internal class AttitudeComponentTest {
     private val attitude1 = Attitude(type1, 2)
     private val attitude2 = Attitude(type0, 3)
 
-    private val attitudes0 = listOf(attitude0, attitude1)
-    private val attitudes1 = listOf(attitude2)
+    private val attitudes0 = mapOf(type0 to attitude0, type1 to attitude1)
+    private val attitudes1 = mapOf(type0 to attitude2)
 
     private val component = AttitudeComponent(mapOf(id0 to attitudes0, id1 to attitudes1))
 
@@ -47,15 +47,15 @@ internal class AttitudeComponentTest {
         fun `Get all attitudes of a type`() {
             assertThat(component.getAttitudesOfType(type0)).isEqualTo(
                 mapOf(
-                    id0 to listOf(attitude0),
-                    id1 to listOf(attitude2)
+                    id0 to attitude0,
+                    id1 to attitude2
                 )
             )
         }
 
         @Test
         fun `Character has no attitude of that type to another character`() {
-            assertThat(component.getAttitudesOfType(type1)).isEqualTo(mapOf(id0 to listOf(attitude1)))
+            assertThat(component.getAttitudesOfType(type1)).isEqualTo(mapOf(id0 to attitude1))
         }
     }
 }
