@@ -18,4 +18,7 @@ data class AttitudeComponent(val attitudes: Map<CharacterId, Map<AttitudeType, A
 
         return result
     }
+
+    fun getAttitudeValue(id: CharacterId,  type: AttitudeType) =
+        getAttitudesOfType(type)[id]?.value ?: type.defaultValue
 }
