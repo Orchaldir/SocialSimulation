@@ -7,7 +7,7 @@ package social {
 package effect {
 
 interface Effect {
-  Context applyTo(Context context)
+  Update applyTo(Update update)
 }
 
 class CauseEmotion {
