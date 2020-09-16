@@ -7,7 +7,7 @@ import social.data.utility.Context
 
 internal class NotConditionTest {
 
-    private val context = Context(emptyMap())
+    private val context = Context()
 
     @Test
     fun `Negate the inner condition`() {

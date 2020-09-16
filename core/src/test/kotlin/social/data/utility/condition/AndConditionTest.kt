@@ -7,7 +7,7 @@ import social.data.utility.Context
 
 internal class AndConditionTest {
 
-    private val context = Context(emptyMap())
+    private val context = Context()
 
     @Test
     fun `An empty AndCondition evaluates to true`() {

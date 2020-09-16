@@ -7,7 +7,7 @@ import social.data.utility.Context
 
 internal class FixedValueConditionTest {
 
-    private val context = Context(emptyMap())
+    private val context = Context()
 
     @Test
     fun `The correct value is returned`() {
