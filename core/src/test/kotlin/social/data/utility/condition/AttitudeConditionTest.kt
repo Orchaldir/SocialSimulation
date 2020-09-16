@@ -1,17 +1,17 @@
-package social.data.condition
+package social.data.utility.condition
 
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import social.data.action.CharacterRole.SPEAKER
-import social.data.action.CharacterRole.TARGET
-import social.data.action.Context
 import social.data.character.Character
 import social.data.character.CharacterId
 import social.data.character.attitude.AttitudeComponent
 import social.data.character.attitude.AttitudeType
+import social.data.utility.CharacterRole.SPEAKER
+import social.data.utility.CharacterRole.TARGET
+import social.data.utility.Context
 
 internal class AttitudeConditionTest {
 

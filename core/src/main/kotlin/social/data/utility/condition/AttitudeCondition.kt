@@ -1,8 +1,8 @@
-package social.data.condition
+package social.data.utility.condition
 
-import social.data.action.CharacterRole
-import social.data.action.Context
 import social.data.character.attitude.AttitudeType
+import social.data.utility.CharacterRole
+import social.data.utility.Context
 
 data class AttitudeCondition(
     val from: CharacterRole,

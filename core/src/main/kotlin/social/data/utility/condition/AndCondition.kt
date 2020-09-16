@@ -1,6 +1,6 @@
-package social.data.condition
+package social.data.utility.condition
 
-import social.data.action.Context
+import social.data.utility.Context
 
 data class AndCondition(val conditions: List<Condition>) : Condition {
 

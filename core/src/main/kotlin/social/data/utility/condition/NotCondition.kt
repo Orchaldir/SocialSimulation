@@ -1,6 +1,6 @@
-package social.data.condition
+package social.data.utility.condition
 
-import social.data.action.Context
+import social.data.utility.Context
 
 data class NotCondition(val condition: Condition) : Condition {
 

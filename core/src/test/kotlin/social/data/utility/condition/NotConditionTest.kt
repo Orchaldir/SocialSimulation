@@ -1,9 +1,9 @@
-package social.data.condition
+package social.data.utility.condition
 
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import social.data.action.Context
+import social.data.utility.Context
 
 internal class NotConditionTest {
 

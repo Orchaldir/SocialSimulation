@@ -1,4 +1,4 @@
-package social.data.action
+package social.data.utility
 
 import social.data.character.Character
 
