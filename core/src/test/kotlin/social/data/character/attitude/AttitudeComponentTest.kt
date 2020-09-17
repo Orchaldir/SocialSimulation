@@ -3,6 +3,7 @@ package social.data.character.attitude
 import assertk.assertThat
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import social.data.character.CharacterId
@@ -56,6 +57,28 @@ internal class AttitudeComponentTest {
         @Test
         fun `Character has no attitude of that type to another character`() {
             assertThat(component.getAttitudesOfType(type1)).isEqualTo(mapOf(id0 to attitude1))
+        }
+    }
+
+    @Nested
+    inner class GetAttitude {
+
+        @Test
+        fun `Get a specific attitude value`() {
+            assertThat(component.getAttitude(id0, type0)).isEqualTo(attitude0)
+            assertThat(component.getAttitude(id0, type1)).isEqualTo(attitude1)
+            assertThat(component.getAttitude(id1, type0)).isEqualTo(attitude2)
+        }
+
+        @Test
+        fun `Character has no attitudes towards that character`() {
+            assertNull(component.getAttitude(id2, type0))
+            assertNull(component.getAttitude(id2, type1))
+        }
+
+        @Test
+        fun `Character has no attitude of that type`() {
+            assertNull(component.getAttitude(id1, type1))
         }
     }
 

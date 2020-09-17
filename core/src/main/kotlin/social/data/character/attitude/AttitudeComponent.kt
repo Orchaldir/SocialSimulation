@@ -6,8 +6,8 @@ data class AttitudeComponent(val attitudes: Map<CharacterId, Map<AttitudeType, A
 
     fun getAttitudesTowards(id: CharacterId) = attitudes.getOrDefault(id, emptyMap())
 
-    fun getAttitudesOfType(type: AttitudeType) : Map<CharacterId,Attitude> {
-        val result = mutableMapOf<CharacterId,Attitude>()
+    fun getAttitudesOfType(type: AttitudeType): Map<CharacterId, Attitude> {
+        val result = mutableMapOf<CharacterId, Attitude>()
 
         attitudes.forEach { (id, attitudes) ->
             val attitude = attitudes[type]
@@ -19,6 +19,7 @@ data class AttitudeComponent(val attitudes: Map<CharacterId, Map<AttitudeType, A
         return result
     }
 
-    fun getAttitudeValue(id: CharacterId,  type: AttitudeType) =
-        getAttitudesOfType(type)[id]?.value ?: type.defaultValue
+    fun getAttitude(id: CharacterId, type: AttitudeType) = attitudes[id]?.get(type)
+
+    fun getAttitudeValue(id: CharacterId, type: AttitudeType) = getAttitude(id, type)?.value ?: type.defaultValue
 }
