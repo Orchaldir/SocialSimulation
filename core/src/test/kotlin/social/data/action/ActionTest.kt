@@ -6,6 +6,8 @@ import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Test
 import social.data.utility.Context
+import social.data.utility.Update
+import social.data.utility.effect.Effect
 
 internal class ActionTest {
 
@@ -13,9 +15,15 @@ internal class ActionTest {
     private val rule1 = mockk<UtilityRule>()
     private val rule2 = mockk<UtilityRule>()
 
+    private val effect0 = mockk<Effect>()
+    private val effect1 = mockk<Effect>()
+
     private val context = mockk<Context>()
 
-    private val action = Action("action0", listOf(rule0, rule1, rule2), emptyList())
+    private val update0 = mockk<Update>()
+    private val update1 = mockk<Update>()
+
+    private val action = Action("action0", listOf(rule0, rule1, rule2), listOf(effect0, effect1))
 
     @Test
     fun `Calculate the utility of an action`() {
@@ -24,6 +32,14 @@ internal class ActionTest {
         every { rule2.getUtilityModifier(context) } returns -8
 
         assertThat(action.calculateUtility(context)).isEqualTo(12)
+    }
+
+    @Test
+    fun `Execute an action`() {
+        every { effect0.applyTo(any()) } returns update0
+        every { effect1.applyTo(update0) } returns update1
+
+        assertThat(action.execute(context)).isEqualTo(update1)
     }
 
 }
