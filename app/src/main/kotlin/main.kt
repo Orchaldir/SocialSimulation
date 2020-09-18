@@ -7,9 +7,9 @@ import social.data.character.attitude.AttitudeType
 import social.data.utility.CharacterRole.SPEAKER
 import social.data.utility.CharacterRole.TARGET
 import social.data.utility.Context
-import social.data.utility.condition.AndCondition
 import social.data.utility.condition.AttitudeCondition
-import social.data.utility.condition.NotCondition
+import social.data.utility.condition.and
+import social.data.utility.condition.not
 import social.data.utility.effect.ModifyAttitude
 
 fun main() {
@@ -36,8 +36,8 @@ fun main() {
 
     val isFriend = AttitudeCondition(SPEAKER, TARGET, opinion, 5)
     val notEnemy = AttitudeCondition(SPEAKER, TARGET, opinion, -5)
-    val isEnemy = NotCondition(notEnemy)
-    val isStranger = AndCondition(NotCondition(isFriend), notEnemy)
+    val isEnemy = not(notEnemy)
+    val isStranger = and(not(isFriend), notEnemy)
 
     val forFriends = UtilityRule("For friends", isFriend, 5)
     val forEnemies = UtilityRule("For enemies", isEnemy, 5)

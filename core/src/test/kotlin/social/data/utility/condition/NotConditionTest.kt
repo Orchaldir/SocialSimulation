@@ -11,8 +11,8 @@ internal class NotConditionTest {
 
     @Test
     fun `Negate the inner condition`() {
-        assertFalse(NotCondition(FixedValueCondition(true)).evaluate(context))
-        assertTrue(NotCondition(FixedValueCondition(false)).evaluate(context))
+        assertFalse(not(FixedValueCondition(true)).evaluate(context))
+        assertTrue(not(FixedValueCondition(false)).evaluate(context))
     }
 
 }

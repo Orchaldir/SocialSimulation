@@ -12,16 +12,16 @@ internal class AndConditionTest {
     @Test
     fun `An empty AndCondition evaluates to true`() {
         assertTrue(AndCondition(emptyList()).evaluate(context))
-        assertTrue(AndCondition().evaluate(context))
+        assertTrue(and().evaluate(context))
     }
 
     @Test
     fun `An AndCondition with only true conditions evaluates to true`() {
         val condition = FixedValueCondition(true)
 
-        assertTrue(AndCondition(condition).evaluate(context))
-        assertTrue(AndCondition(condition, condition).evaluate(context))
-        assertTrue(AndCondition(condition, condition, condition).evaluate(context))
+        assertTrue(and(condition).evaluate(context))
+        assertTrue(and(condition, condition).evaluate(context))
+        assertTrue(and(condition, condition, condition).evaluate(context))
     }
 
     @Test
@@ -29,9 +29,9 @@ internal class AndConditionTest {
         val trueCondition = FixedValueCondition(true)
         val falseCondition = FixedValueCondition(false)
 
-        assertFalse(AndCondition(falseCondition).evaluate(context))
-        assertFalse(AndCondition(falseCondition, trueCondition).evaluate(context))
-        assertFalse(AndCondition(trueCondition, falseCondition, trueCondition).evaluate(context))
-        assertFalse(AndCondition(falseCondition, falseCondition, falseCondition).evaluate(context))
+        assertFalse(and(falseCondition).evaluate(context))
+        assertFalse(and(falseCondition, trueCondition).evaluate(context))
+        assertFalse(and(trueCondition, falseCondition, trueCondition).evaluate(context))
+        assertFalse(and(falseCondition, falseCondition, falseCondition).evaluate(context))
     }
 }
