@@ -19,17 +19,19 @@ internal class ModifyAttitudeTest {
     private val id0: CharacterId = 0
     private val id1: CharacterId = 1
 
-    private val type = AttitudeType("type0", 11)
+    private val type0 = AttitudeType("type0", 11)
+    private val type1 = AttitudeType("type1", 11)
 
-    private val attitude0 = Attitude(type, 7)
+    private val attitude0 = Attitude(type0, 7)
+    private val attitude1 = Attitude(type1, -4)
 
     private val attitudes0 = AttitudeComponent(emptyMap())
-    private val attitudes1 = AttitudeComponent(mapOf(id0 to mapOf(type to attitude0)))
+    private val attitudes1 = AttitudeComponent(mapOf(id0 to mapOf(type0 to attitude0, type1 to attitude1)))
 
     private val character0 = Character(id0, attitudes0)
     private val character1 = Character(id1, attitudes1)
 
-    private val effect = ModifyAttitude(TARGET, SPEAKER, type, 12)
+    private val effect = ModifyAttitude(TARGET, SPEAKER, type0, 12)
 
     @Test
     fun `Update existing attitude`() {
@@ -42,7 +44,7 @@ internal class ModifyAttitudeTest {
         assertThat(newUpdate.updatedCharacters).containsAll(
             TARGET to Character(
                 id1,
-                AttitudeComponent(mapOf(id0 to mapOf(type to Attitude(type, 19))))
+                AttitudeComponent(mapOf(id0 to mapOf(type0 to Attitude(type0, 19), type1 to attitude1)))
             )
         )
     }
@@ -58,7 +60,7 @@ internal class ModifyAttitudeTest {
         assertThat(newUpdate.updatedCharacters).containsAll(
             TARGET to Character(
                 id0,
-                AttitudeComponent(mapOf(id1 to mapOf(type to Attitude(type, 23))))
+                AttitudeComponent(mapOf(id1 to mapOf(type0 to Attitude(type0, 23))))
             )
         )
     }

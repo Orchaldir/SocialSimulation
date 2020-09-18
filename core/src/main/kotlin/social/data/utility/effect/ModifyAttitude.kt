@@ -26,7 +26,7 @@ data class ModifyAttitude(
 
         val newAttitude = updateAttitude(fromCharacter, towardCharacter)
 
-        val newAttitudesTowardCharacter = (fromCharacter.attitudeComponent.attitudes[fromCharacter.id] ?: emptyMap())
+        val newAttitudesTowardCharacter = (fromCharacter.attitudeComponent.attitudes[towardCharacter.id] ?: emptyMap())
             .copyAndAdd(type, newAttitude)
 
         val newAttitudes = fromCharacter.attitudeComponent.attitudes
