@@ -11,14 +11,10 @@ class AttitudeType {
   int default
 }
 
-class Attitude {
-  int strength
-}
-
 class AttitudeComponent {
-  Map<CharacterId,List<Attitude>> getAllAttitudes()
-  List<Attitude> getAttitudes(CharacterId id)
-  Map<CharacterId,Attitude> getAttitudes(AttitudeType type)
+  Map<Pair<CharacterId,AttitudeType>,Int> attitudes
+  Map<AttitudeType,Int> getAttitudes(CharacterId id)
+  Map<CharacterId,Int> getAttitudes(AttitudeType type)
   int getAttitude(CharacterId id, AttitudeType type)
 }
 
@@ -30,8 +26,7 @@ class Character
 
 }
 
-Attitude *--  AttitudeType
-AttitudeComponent "1" *-- "*"  Attitude
+AttitudeComponent --  AttitudeType
 Character *--  AttitudeComponent
 CharacterId *--  Character
 
