@@ -16,7 +16,7 @@ package action {
 
 class Action {
   int calculateUtility(Context context)
-  Update applyEffects(Context context)
+  Update execute(Context context)
 }
 
 enum Role {
@@ -42,7 +42,6 @@ package rule {
 class UtilityRule {
   String description
   int modifier
-  bool isTriggered(Context context)
   int getUtilityModifier(Context context)
 }
 
