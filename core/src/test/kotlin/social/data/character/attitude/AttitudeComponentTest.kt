@@ -17,11 +17,9 @@ internal class AttitudeComponentTest {
     private val id2: CharacterId = 2
 
     private val component = AttitudeComponent(
-        mapOf(
-            Pair(id0, type0) to 1,
-            Pair(id0, type1) to 2,
-            Pair(id1, type0) to 3
-        )
+        Pair(id0, type0) to 1,
+        Pair(id0, type1) to 2,
+        Pair(id1, type0) to 3
     )
 
     @Nested

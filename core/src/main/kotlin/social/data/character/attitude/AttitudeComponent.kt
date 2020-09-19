@@ -4,6 +4,8 @@ import social.data.character.CharacterId
 
 data class AttitudeComponent(val attitudes: Map<Pair<CharacterId, AttitudeType>, Int>) {
 
+    constructor(vararg attitudes: Pair<Pair<CharacterId, AttitudeType>, Int>) : this(attitudes.toMap())
+
     fun getAttitudesTowards(id: CharacterId) = attitudes
         .filterKeys { it.first == id }
         .mapKeys { it.key.second }

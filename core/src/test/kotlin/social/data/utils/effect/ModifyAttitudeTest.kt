@@ -22,7 +22,7 @@ internal class ModifyAttitudeTest {
     private val type1 = AttitudeType("type1", 11)
 
     private val attitudes0 = AttitudeComponent(emptyMap())
-    private val attitudes1 = AttitudeComponent(mapOf(Pair(id0, type0) to 7, Pair(id0, type1) to -4))
+    private val attitudes1 = AttitudeComponent(Pair(id0, type0) to 7, Pair(id0, type1) to -4)
 
     private val character0 = Character(id0, attitudes0)
     private val character1 = Character(id1, attitudes1)
@@ -38,10 +38,7 @@ internal class ModifyAttitudeTest {
 
         assertThat(newUpdate.context).isEqualTo(context)
         assertThat(newUpdate.updatedCharacters).containsAll(
-            TARGET to Character(
-                id1,
-                AttitudeComponent(mapOf(Pair(id0, type0) to 19, Pair(id0, type1) to -4))
-            )
+            TARGET to Character(id1, AttitudeComponent(Pair(id0, type0) to 19, Pair(id0, type1) to -4))
         )
     }
 
@@ -54,10 +51,7 @@ internal class ModifyAttitudeTest {
 
         assertThat(newUpdate.context).isEqualTo(context)
         assertThat(newUpdate.updatedCharacters).containsAll(
-            TARGET to Character(
-                id0,
-                AttitudeComponent(mapOf(Pair(id1, type0) to 23))
-            )
+            TARGET to Character(id0, AttitudeComponent(Pair(id1, type0) to 23))
         )
     }
 }

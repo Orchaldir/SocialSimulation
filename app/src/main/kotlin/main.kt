@@ -18,9 +18,9 @@ fun main() {
     val id1 = 1
     val id2 = 2
 
-    val character0 = Character(id0, AttitudeComponent(mapOf(Pair(id1, opinion) to 10, Pair(id2, opinion) to -10)))
-    val character1 = Character(id1, AttitudeComponent(mapOf(Pair(id0, opinion) to 10)))
-    val character2 = Character(id2, AttitudeComponent(mapOf(Pair(id0, opinion) to -10)))
+    val character0 = Character(id0, AttitudeComponent(Pair(id1, opinion) to 10, Pair(id2, opinion) to -10))
+    val character1 = Character(id1, AttitudeComponent(Pair(id0, opinion) to 10))
+    val character2 = Character(id2, AttitudeComponent(Pair(id0, opinion) to -10))
 
     val isFriend = AttitudeCondition(SPEAKER, TARGET, opinion, 5)
     val notEnemy = AttitudeCondition(SPEAKER, TARGET, opinion, -5)
