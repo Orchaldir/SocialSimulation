@@ -6,16 +6,16 @@ package character {
 
 package attitude {
 
-class AttitudeType {
+class Attitude {
   String name
   int default
 }
 
 class AttitudeComponent {
-  Map<Pair<CharacterId,AttitudeType>,Int> attitudes
-  Map<AttitudeType,Int> getAttitudes(CharacterId id)
-  Map<CharacterId,Int> getAttitudes(AttitudeType type)
-  int getAttitude(CharacterId id, AttitudeType type)
+  Map<Pair<CharacterId,Attitude>,Int> attitudes
+  Map<Attitude,Int> getAttitudes(CharacterId id)
+  Map<CharacterId,Int> getAttitudes(Attitude type)
+  int getAttitude(CharacterId id, Attitude type)
 }
 
 }
@@ -26,7 +26,7 @@ class Character
 
 }
 
-AttitudeComponent --  AttitudeType
+AttitudeComponent --  Attitude
 Character *--  AttitudeComponent
 CharacterId *--  Character
 
