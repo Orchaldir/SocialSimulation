@@ -3,6 +3,7 @@ package social.data.action
 import social.data.utils.Context
 import social.data.utils.Update
 import social.data.utils.effect.Effect
+import social.data.utils.utility.UtilityRule
 
 class Action(val name: String, private val utilityRules: List<UtilityRule>, private val effects: List<Effect>) {
 

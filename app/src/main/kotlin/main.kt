@@ -1,5 +1,4 @@
 import social.data.action.Action
-import social.data.action.UtilityRule
 import social.data.character.Character
 import social.data.character.attitude.AttitudeComponent
 import social.data.character.attitude.AttitudeType
@@ -10,6 +9,7 @@ import social.data.utils.condition.AttitudeCondition
 import social.data.utils.condition.and
 import social.data.utils.condition.not
 import social.data.utils.effect.ModifyAttitude
+import social.data.utils.utility.UtilityRule
 
 fun main() {
     val opinion = AttitudeType("opinion", 0)

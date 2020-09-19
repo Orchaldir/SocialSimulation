@@ -1,4 +1,4 @@
-package social.data.action
+package social.data.utils.utility
 
 import social.data.utils.Context
 import social.data.utils.condition.Condition

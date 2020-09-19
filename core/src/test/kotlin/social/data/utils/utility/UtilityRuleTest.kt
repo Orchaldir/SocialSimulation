@@ -1,4 +1,4 @@
-package social.data.action
+package social.data.utils.utility
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
