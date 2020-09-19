@@ -5,8 +5,8 @@ import assertk.assertions.isEqualTo
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Test
-import social.data.utility.Context
-import social.data.utility.condition.Condition
+import social.data.utils.Context
+import social.data.utils.condition.Condition
 
 internal class UtilityRuleTest {
 

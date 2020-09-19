@@ -1,4 +1,4 @@
-package social.data.utility.condition
+package social.data.utils.condition
 
 import io.mockk.every
 import io.mockk.mockk
@@ -9,9 +9,9 @@ import social.data.character.Character
 import social.data.character.CharacterId
 import social.data.character.attitude.AttitudeComponent
 import social.data.character.attitude.AttitudeType
-import social.data.utility.CharacterRole.SPEAKER
-import social.data.utility.CharacterRole.TARGET
-import social.data.utility.Context
+import social.data.utils.CharacterRole.SPEAKER
+import social.data.utils.CharacterRole.TARGET
+import social.data.utils.Context
 
 internal class AttitudeConditionTest {
 

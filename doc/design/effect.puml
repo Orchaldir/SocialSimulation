@@ -2,9 +2,7 @@
 
 hide empty members
 
-package social {
-
-package effect {
+package social.utils.effect {
 
 interface Effect {
   Update applyTo(Update update)
@@ -19,8 +17,6 @@ class ModifyAttitude {
   Role from, toward
   AttitudeType type
   int value
-}
-
 }
 
 }

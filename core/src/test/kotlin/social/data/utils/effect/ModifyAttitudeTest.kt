@@ -1,4 +1,4 @@
-package social.data.utility.effect
+package social.data.utils.effect
 
 import assertk.assertThat
 import assertk.assertions.containsAll
@@ -9,10 +9,10 @@ import social.data.character.CharacterId
 import social.data.character.attitude.Attitude
 import social.data.character.attitude.AttitudeComponent
 import social.data.character.attitude.AttitudeType
-import social.data.utility.CharacterRole.SPEAKER
-import social.data.utility.CharacterRole.TARGET
-import social.data.utility.Context
-import social.data.utility.Update
+import social.data.utils.CharacterRole.SPEAKER
+import social.data.utils.CharacterRole.TARGET
+import social.data.utils.Context
+import social.data.utils.Update
 
 internal class ModifyAttitudeTest {
 

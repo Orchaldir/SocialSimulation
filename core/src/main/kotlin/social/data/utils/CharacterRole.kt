@@ -1,4 +1,4 @@
-package social.data.utility
+package social.data.utils
 
 enum class CharacterRole {
     SPEAKER,

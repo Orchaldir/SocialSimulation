@@ -1,7 +1,7 @@
 package social.data.action
 
-import social.data.utility.Context
-import social.data.utility.condition.Condition
+import social.data.utils.Context
+import social.data.utils.condition.Condition
 
 class UtilityRule(val description: String, private val condition: Condition, private val utilityModifier: Int) {
 

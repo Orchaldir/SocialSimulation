@@ -1,9 +1,9 @@
-package social.data.utility.condition
+package social.data.utils.condition
 
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import social.data.utility.Context
+import social.data.utils.Context
 
 internal class FixedValueConditionTest {
 

@@ -4,14 +4,6 @@ hide empty members
 
 package social {
 
-package effect {
-
-interface Effect {
-  Update applyTo(Update update)
-}
-
-}
-
 package action {
 
 class Action {
@@ -37,7 +29,17 @@ class Update {
 
 }
 
-package rule {
+package utils {
+
+package effect {
+
+interface Effect {
+  Update applyTo(Update update)
+}
+
+}
+
+package utility {
 
 class UtilityRule {
   String description
@@ -57,8 +59,10 @@ interface Condition {
 
 }
 
-Action "1" *-left- "*" UtilityRule
-Action "1" *-up- "*" Effect
+}
+
+Action "1" *-- "*" UtilityRule
+Action "1" *-- "*" Effect
 Action -[hidden]- Update
 UtilityRule "1" *-- "*" Condition
 

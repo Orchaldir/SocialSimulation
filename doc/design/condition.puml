@@ -2,9 +2,7 @@
 
 hide empty members
 
-package social {
-
-package condition {
+package social.utils.condition {
 
 interface Condition {
   bool evaluate(Context context)
@@ -25,8 +23,6 @@ class CauseEmotionCondition {
 class HasEmotionCondition {
   Role role
   EmotionType type
-}
-
 }
 
 }

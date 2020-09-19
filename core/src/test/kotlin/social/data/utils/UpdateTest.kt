@@ -1,4 +1,4 @@
-package social.data.utility
+package social.data.utils
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
@@ -6,8 +6,8 @@ import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import social.data.character.Character
-import social.data.utility.CharacterRole.SPEAKER
-import social.data.utility.CharacterRole.TARGET
+import social.data.utils.CharacterRole.SPEAKER
+import social.data.utils.CharacterRole.TARGET
 
 internal class UpdateTest {
 

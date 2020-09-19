@@ -4,13 +4,13 @@ import social.data.character.Character
 import social.data.character.attitude.Attitude
 import social.data.character.attitude.AttitudeComponent
 import social.data.character.attitude.AttitudeType
-import social.data.utility.CharacterRole.SPEAKER
-import social.data.utility.CharacterRole.TARGET
-import social.data.utility.Context
-import social.data.utility.condition.AttitudeCondition
-import social.data.utility.condition.and
-import social.data.utility.condition.not
-import social.data.utility.effect.ModifyAttitude
+import social.data.utils.CharacterRole.SPEAKER
+import social.data.utils.CharacterRole.TARGET
+import social.data.utils.Context
+import social.data.utils.condition.AttitudeCondition
+import social.data.utils.condition.and
+import social.data.utils.condition.not
+import social.data.utils.effect.ModifyAttitude
 
 fun main() {
     val opinion = AttitudeType("opinion", 0)

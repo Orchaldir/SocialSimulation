@@ -5,9 +5,9 @@ import assertk.assertions.isEqualTo
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Test
-import social.data.utility.Context
-import social.data.utility.Update
-import social.data.utility.effect.Effect
+import social.data.utils.Context
+import social.data.utils.Update
+import social.data.utils.effect.Effect
 
 internal class ActionTest {
 
