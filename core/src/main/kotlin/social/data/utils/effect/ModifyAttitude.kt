@@ -1,7 +1,5 @@
 package social.data.utils.effect
 
-import social.data.character.Character
-import social.data.character.attitude.Attitude
 import social.data.character.attitude.AttitudeComponent
 import social.data.character.attitude.AttitudeType
 import social.data.utils.CharacterRole
@@ -24,29 +22,18 @@ data class ModifyAttitude(
         val fromCharacter = requireNotNull(update.getCharacter(from))
         val towardCharacter = requireNotNull(update.getCharacter(toward))
 
-        val newAttitude = updateAttitude(fromCharacter, towardCharacter)
+        val newAttitudes = HashMap(fromCharacter.attitudeComponent.attitudes)
 
-        val newAttitudesTowardCharacter = (fromCharacter.attitudeComponent.attitudes[towardCharacter.id] ?: emptyMap())
-            .copyAndAdd(type, newAttitude)
+        val oldValue = fromCharacter.attitudeComponent.getAttitude(towardCharacter.id, type)
+        val newValue = oldValue + modifier
 
-        val newAttitudes = fromCharacter.attitudeComponent.attitudes
-            .copyAndAdd(towardCharacter.id, newAttitudesTowardCharacter)
+        newAttitudes[Pair(towardCharacter.id, type)] = newValue
 
         val newFromCharacter = fromCharacter.copy(attitudeComponent = AttitudeComponent(newAttitudes))
 
         val newUpdatedCharacters = update.updatedCharacters.copyAndAdd(from, newFromCharacter)
 
         return update.copy(updatedCharacters = newUpdatedCharacters)
-    }
-
-    private fun updateAttitude(
-        fromCharacter: Character,
-        towardCharacter: Character
-    ): Attitude {
-        val oldAttitude = fromCharacter.attitudeComponent.getAttitude(towardCharacter.id, type)
-        val oldValue = oldAttitude?.value ?: type.defaultValue
-        val newValue = oldValue + modifier
-        return Attitude(type, newValue)
     }
 
 }

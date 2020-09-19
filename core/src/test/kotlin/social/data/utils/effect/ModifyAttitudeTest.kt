@@ -6,7 +6,6 @@ import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
 import social.data.character.Character
 import social.data.character.CharacterId
-import social.data.character.attitude.Attitude
 import social.data.character.attitude.AttitudeComponent
 import social.data.character.attitude.AttitudeType
 import social.data.utils.CharacterRole.SPEAKER
@@ -22,11 +21,8 @@ internal class ModifyAttitudeTest {
     private val type0 = AttitudeType("type0", 11)
     private val type1 = AttitudeType("type1", 11)
 
-    private val attitude0 = Attitude(type0, 7)
-    private val attitude1 = Attitude(type1, -4)
-
     private val attitudes0 = AttitudeComponent(emptyMap())
-    private val attitudes1 = AttitudeComponent(mapOf(id0 to mapOf(type0 to attitude0, type1 to attitude1)))
+    private val attitudes1 = AttitudeComponent(mapOf(Pair(id0, type0) to 7, Pair(id0, type1) to -4))
 
     private val character0 = Character(id0, attitudes0)
     private val character1 = Character(id1, attitudes1)
@@ -44,7 +40,7 @@ internal class ModifyAttitudeTest {
         assertThat(newUpdate.updatedCharacters).containsAll(
             TARGET to Character(
                 id1,
-                AttitudeComponent(mapOf(id0 to mapOf(type0 to Attitude(type0, 19), type1 to attitude1)))
+                AttitudeComponent(mapOf(Pair(id0, type0) to 19, Pair(id0, type1) to -4))
             )
         )
     }
@@ -60,7 +56,7 @@ internal class ModifyAttitudeTest {
         assertThat(newUpdate.updatedCharacters).containsAll(
             TARGET to Character(
                 id0,
-                AttitudeComponent(mapOf(id1 to mapOf(type0 to Attitude(type0, 23))))
+                AttitudeComponent(mapOf(Pair(id1, type0) to 23))
             )
         )
     }

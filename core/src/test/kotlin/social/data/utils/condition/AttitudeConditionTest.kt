@@ -48,7 +48,7 @@ internal class AttitudeConditionTest {
     fun `Attitude is smaller than the threshold`() {
         val context = Context(mapOf(SPEAKER to character0, TARGET to character1))
 
-        every { character0.attitudeComponent.getAttitudeValue(id1, type) } returns threshold - 5
+        every { character0.attitudeComponent.getAttitude(id1, type) } returns threshold - 5
 
         assertFalse(condition.evaluate(context))
     }
@@ -57,7 +57,7 @@ internal class AttitudeConditionTest {
     fun `Attitude is bigger than the threshold`() {
         val context = Context(mapOf(SPEAKER to character0, TARGET to character1))
 
-        every { character0.attitudeComponent.getAttitudeValue(id1, type) } returns threshold + 5
+        every { character0.attitudeComponent.getAttitude(id1, type) } returns threshold + 5
 
         assertTrue(condition.evaluate(context))
     }
@@ -66,7 +66,7 @@ internal class AttitudeConditionTest {
     fun `Attitude is equal to the threshold`() {
         val context = Context(mapOf(SPEAKER to character0, TARGET to character1))
 
-        every { character0.attitudeComponent.getAttitudeValue(id1, type) } returns threshold
+        every { character0.attitudeComponent.getAttitude(id1, type) } returns threshold
 
         assertTrue(condition.evaluate(context))
     }

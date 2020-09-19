@@ -2,24 +2,15 @@ package social.data.character.attitude
 
 import social.data.character.CharacterId
 
-data class AttitudeComponent(val attitudes: Map<CharacterId, Map<AttitudeType, Attitude>>) {
+data class AttitudeComponent(val attitudes: Map<Pair<CharacterId, AttitudeType>, Int>) {
 
-    fun getAttitudesTowards(id: CharacterId) = attitudes.getOrDefault(id, emptyMap())
+    fun getAttitudesTowards(id: CharacterId) = attitudes
+        .filterKeys { it.first == id }
+        .mapKeys { it.key.second }
 
-    fun getAttitudesOfType(type: AttitudeType): Map<CharacterId, Attitude> {
-        val result = mutableMapOf<CharacterId, Attitude>()
+    fun getAttitudesOfType(type: AttitudeType) = attitudes
+        .filterKeys { it.second == type }
+        .mapKeys { it.key.first }
 
-        attitudes.forEach { (id, attitudes) ->
-            val attitude = attitudes[type]
-            if (attitude != null) {
-                result[id] = attitude
-            }
-        }
-
-        return result
-    }
-
-    fun getAttitude(id: CharacterId, type: AttitudeType) = attitudes[id]?.get(type)
-
-    fun getAttitudeValue(id: CharacterId, type: AttitudeType) = getAttitude(id, type)?.value ?: type.defaultValue
+    fun getAttitude(id: CharacterId, type: AttitudeType) = attitudes[Pair(id, type)] ?: type.defaultValue
 }
