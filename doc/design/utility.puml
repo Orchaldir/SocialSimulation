@@ -1,0 +1,36 @@
+@startuml
+
+hide empty members
+
+package social.utils {
+
+package utility {
+
+class UtilityRuleSet {
+  int calculateUtility(Context context)
+  List<UtilityRule> getTriggeredRules(Context context)
+}
+
+class UtilityRule {
+  String description
+  int modifier
+  int getUtilityModifier(Context context)
+}
+
+}
+
+package condition {
+
+interface Condition {
+  bool evaluate(Context context)
+}
+
+}
+
+}
+
+UtilityRuleSet "1" *-- "*" UtilityRule
+UtilityRule "1" *-- "*" Condition
+
+
+@enduml

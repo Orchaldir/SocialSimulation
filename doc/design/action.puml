@@ -8,6 +8,7 @@ package action {
 
 class Action {
   int calculateUtility(Context context)
+  List<UtilityRule> getTriggeredRules(Context context)
   Update execute(Context context)
 }
 
@@ -23,7 +24,6 @@ class Context {
 }
 
 class Update {
-  Context context
   Map<CharacterId,Character> updatedCharacters
 }
 
@@ -41,19 +41,7 @@ interface Effect {
 
 package utility {
 
-class UtilityRule {
-  String description
-  int modifier
-  int getUtilityModifier(Context context)
-}
-
-}
-
-package condition {
-
-interface Condition {
-  bool evaluate(Context context)
-}
+class UtilityRuleSet
 
 }
 
@@ -61,12 +49,13 @@ interface Condition {
 
 }
 
-Action "1" *-- "*" UtilityRule
-Action "1" *-- "*" Effect
+Action "1" *-up- "1" UtilityRuleSet
+Action "1" *-up- "*" Effect
 Action -[hidden]- Update
-UtilityRule "1" *-- "*" Condition
 
 Context -- Role
+Context "1" *-up- "1" UtilityRuleSet
+Context "1" *-- "1" Action
 
 
 @enduml
