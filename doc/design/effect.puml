@@ -19,10 +19,22 @@ class ModifyAttitude {
   int value
 }
 
+class AddRelationship {
+  Role from, toward
+  Relationship relationship
+}
+
+class RemoveRelationship {
+  Role from, toward
+  Relationship relationship
+}
+
 }
 
 Effect <|-- CauseEmotion
 Effect <|-- ModifyAttitude
+Effect <|-- AddRelationship
+Effect <|-- RemoveRelationship
 
 
 @enduml

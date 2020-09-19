@@ -20,16 +20,22 @@ class CauseEmotionCondition {
   EmotionType type
 }
 
-class HasEmotionCondition {
+class HasEmotion {
   Role role
   EmotionType type
+}
+
+class HasRelationship {
+  Role from, toward
+  Relationship relationship
 }
 
 }
 
 Condition <|-- AttitudeCondition
 Condition <|-- CauseEmotionCondition
-Condition <|-- HasEmotionCondition
+Condition <|-- HasEmotion
+Condition <|-- HasRelationship
 
 
 @enduml
