@@ -29,6 +29,12 @@ class Update {
 
 }
 
+package character.relationship {
+
+class RelationshipManager
+
+}
+
 package utils {
 
 package effect {
@@ -49,13 +55,14 @@ class UtilityRuleSet
 
 }
 
-Action "1" *-up- "1" UtilityRuleSet
+Action *-up- UtilityRuleSet
 Action "1" *-up- "*" Effect
 Action -[hidden]- Update
 
 Context -- Role
-Context "1" *-up- "1" UtilityRuleSet
-Context "1" *-- "1" Action
+Context *-up- UtilityRuleSet
+Context *-- Action
+Context *-up- RelationshipManager
 
 
 @enduml

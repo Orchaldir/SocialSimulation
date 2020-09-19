@@ -1,0 +1,25 @@
+@startuml
+
+hide empty members
+
+package social {
+
+package character.relationship {
+
+class Relationship {
+  String name
+}
+
+class RelationshipManager {
+  bool hasRelationship(CharacterId id0, CharacterId id0, Relationship relationship)
+  Set<Relationship> getRelationships(CharacterId id0, CharacterId id0)
+}
+
+}
+
+
+}
+
+RelationshipManager --  Relationship
+
+@enduml
