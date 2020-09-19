@@ -1,0 +1,27 @@
+@startuml
+
+hide empty members
+
+package character {
+
+package personality {
+
+class Trait {
+  String name
+}
+
+class Personality {
+  bool hasTrait(Trait trait)
+}
+
+}
+
+
+class Character
+
+}
+
+Personality "1" *-- "*"  Trait
+Character *--  Personality
+
+@enduml

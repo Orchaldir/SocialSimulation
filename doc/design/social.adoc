@@ -9,8 +9,8 @@
 ** Annoyed
 * attitude
 ** opinion
-* conditions
-** attitude comparator X
+* relationship
+** friend
 * actions
 ** Compliment
 *** increase opinion
@@ -30,8 +30,9 @@
 **** CharacterRepository
 ** data
 *** action
+*** character
+*** utils
 **** condition
 **** effect
-**** rule
-*** character
+**** utility
 * app

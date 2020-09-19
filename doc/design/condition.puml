@@ -15,7 +15,7 @@ class AttitudeCondition {
   bool checkForBigger
 }
 
-class CauseEmotionCondition {
+class CauseEmotion {
   Role role
   EmotionType type
 }
@@ -30,12 +30,18 @@ class HasRelationship {
   Relationship relationship
 }
 
+class HasTrait {
+  Role role
+  Trait trait
+}
+
 }
 
 Condition <|-- AttitudeCondition
-Condition <|-- CauseEmotionCondition
+Condition <|-- CauseEmotion
 Condition <|-- HasEmotion
 Condition <|-- HasRelationship
+Condition <|-- HasTrait
 
 
 @enduml
