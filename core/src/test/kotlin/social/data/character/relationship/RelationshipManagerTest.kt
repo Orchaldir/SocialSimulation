@@ -17,10 +17,8 @@ internal class RelationshipManagerTest {
     private val id2: CharacterId = 2
 
     private val manager = RelationshipManager(
-        mapOf(
-            createKey(id0, id1) to setOf(relationship0, relationship1),
-            createKey(id0, id2) to setOf(relationship2),
-        )
+        createKey(id0, id1) to setOf(relationship0, relationship1),
+        createKey(id0, id2) to setOf(relationship2),
     )
 
     @Nested
