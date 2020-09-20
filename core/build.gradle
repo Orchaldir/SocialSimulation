@@ -9,6 +9,7 @@ repositories {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("com.willowtreeapps.assertk:assertk:0.22")
     testImplementation("io.mockk:mockk:1.10.0")
 }
