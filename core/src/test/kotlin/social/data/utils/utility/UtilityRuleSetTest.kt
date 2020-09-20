@@ -15,7 +15,7 @@ internal class UtilityRuleSetTest {
 
     private val context = mockk<Context>()
 
-    private val ruleSet = UtilityRuleSet(listOf(rule0, rule1, rule2))
+    private val ruleSet = UtilityRuleSet(rule0, rule1, rule2)
 
     @Test
     fun `Calculate the utility of an action`() {

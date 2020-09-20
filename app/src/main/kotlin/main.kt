@@ -10,6 +10,7 @@ import social.data.utils.condition.and
 import social.data.utils.condition.not
 import social.data.utils.effect.ModifyAttitude
 import social.data.utils.utility.UtilityRule
+import social.data.utils.utility.UtilityRuleSet
 
 fun main() {
     val opinion = AttitudeType("opinion", 0)
@@ -31,9 +32,13 @@ fun main() {
     val forEnemies = UtilityRule("For enemies", isEnemy, 5)
     val forStrangers = UtilityRule("For strangers", isStranger, 5)
 
-    val praise = Action("praise", listOf(forFriends), listOf(ModifyAttitude(SPEAKER, TARGET, opinion, 2)))
-    val smalltalk = Action("smalltalk", listOf(forStrangers), listOf(ModifyAttitude(SPEAKER, TARGET, opinion, 1)))
-    val insult = Action("insult", listOf(forEnemies), listOf(ModifyAttitude(SPEAKER, TARGET, opinion, -2)))
+    val praise = Action("praise", UtilityRuleSet(forFriends), listOf(ModifyAttitude(SPEAKER, TARGET, opinion, 2)))
+    val smalltalk = Action(
+        "smalltalk",
+        UtilityRuleSet(forStrangers),
+        listOf(ModifyAttitude(SPEAKER, TARGET, opinion, 1))
+    )
+    val insult = Action("insult", UtilityRuleSet(forEnemies), listOf(ModifyAttitude(SPEAKER, TARGET, opinion, -2)))
 
     val actions = listOf(praise, smalltalk, insult)
 
