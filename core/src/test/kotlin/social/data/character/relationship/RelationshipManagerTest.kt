@@ -1,5 +1,8 @@
 package social.data.character.relationship
 
+import assertk.assertThat
+import assertk.assertions.isEmpty
+import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import social.data.character.CharacterId
@@ -16,9 +19,12 @@ internal class RelationshipManagerTest {
     private val id1: CharacterId = 1
     private val id2: CharacterId = 2
 
+    private val relationshipsZeroToOne = setOf(relationship0, relationship1)
+    private val relationshipsZeroToTwo = setOf(relationship2)
+
     private val manager = RelationshipManager(
-        createKey(id0, id1) to setOf(relationship0, relationship1),
-        createKey(id0, id2) to setOf(relationship2),
+        createKey(id0, id1) to relationshipsZeroToOne,
+        createKey(id0, id2) to relationshipsZeroToTwo,
     )
 
     @Nested
@@ -55,6 +61,28 @@ internal class RelationshipManagerTest {
             assertFalse(manager.hasRelationship(first, second, relationship1))
             assertFalse(manager.hasRelationship(first, second, relationship2))
         }
+    }
+
+    @Nested
+    inner class GetRelationships {
+
+        @Test
+        fun `Get all relationships between 2 characters`() {
+            assertThat(manager.getRelationships(id0, id1)).isEqualTo(relationshipsZeroToOne)
+            assertThat(manager.getRelationships(id0, id2)).isEqualTo(relationshipsZeroToTwo)
+        }
+
+        @Test
+        fun `Check if the other direction has the same relationships`() {
+            assertThat(manager.getRelationships(id1, id0)).isEqualTo(relationshipsZeroToOne)
+            assertThat(manager.getRelationships(id2, id0)).isEqualTo(relationshipsZeroToTwo)
+        }
+
+        @Test
+        fun `Get an empty set, if 2 characters have no relationship`() {
+            assertThat(manager.getRelationships(id1, id2)).isEmpty()
+        }
+
     }
 
 }

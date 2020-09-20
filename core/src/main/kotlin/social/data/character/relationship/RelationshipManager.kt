@@ -9,4 +9,7 @@ class RelationshipManager(private val relationships: Map<RelationshipKey, Set<Re
     fun hasRelationship(id0: CharacterId, id1: CharacterId, relationship: Relationship) =
         relationships[createKey(id0, id1)]?.contains(relationship) ?: false
 
+    fun getRelationships(id0: CharacterId, id1: CharacterId) =
+        relationships.getOrElse(createKey(id0, id1)) { emptySet() }
+
 }
