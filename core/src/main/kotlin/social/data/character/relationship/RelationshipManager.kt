@@ -2,7 +2,7 @@ package social.data.character.relationship
 
 import social.data.character.CharacterId
 
-class RelationshipManager(private val relationships: Map<RelationshipKey, Set<Relationship>>) {
+data class RelationshipManager(private val relationships: Map<RelationshipKey, Set<Relationship>>) {
 
     constructor(vararg relationships: Pair<RelationshipKey, Set<Relationship>>) : this(relationships.toMap())
 
@@ -11,5 +11,15 @@ class RelationshipManager(private val relationships: Map<RelationshipKey, Set<Re
 
     fun getRelationships(id0: CharacterId, id1: CharacterId) =
         relationships.getOrElse(createKey(id0, id1)) { emptySet() }
+
+    fun addRelationship(id0: CharacterId, id1: CharacterId, relationship: Relationship): RelationshipManager {
+        val newRelationships = HashMap(relationships)
+
+        val key = createKey(id0, id1)
+        val newValue = newRelationships.getOrElse(key) { emptySet() } + relationship
+        newRelationships[key] = newValue
+
+        return RelationshipManager(newRelationships)
+    }
 
 }

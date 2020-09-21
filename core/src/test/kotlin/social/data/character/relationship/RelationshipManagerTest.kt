@@ -85,4 +85,24 @@ internal class RelationshipManagerTest {
 
     }
 
+    @Nested
+    inner class AddRelationship {
+
+        private val newManager = RelationshipManager(createKey(id0, id1) to setOf(relationship2))
+
+        @Test
+        fun `Add a new relationship`() {
+            assertThat(RelationshipManager().addRelationship(id0, id1, relationship2))
+                .isEqualTo(newManager)
+            assertThat(RelationshipManager().addRelationship(id1, id0, relationship2))
+                .isEqualTo(newManager)
+        }
+
+        @Test
+        fun `Add an existing relationship`() {
+            assertThat(newManager.addRelationship(id0, id1, relationship2)).isEqualTo(newManager)
+            assertThat(newManager.addRelationship(id1, id0, relationship2)).isEqualTo(newManager)
+        }
+    }
+
 }
