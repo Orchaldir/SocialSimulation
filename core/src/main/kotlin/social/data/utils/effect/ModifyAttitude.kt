@@ -1,6 +1,5 @@
 package social.data.utils.effect
 
-import social.data.character.attitude.AttitudeComponent
 import social.data.character.attitude.AttitudeType
 import social.data.utils.CharacterRole
 import social.data.utils.Update
@@ -22,14 +21,10 @@ data class ModifyAttitude(
         val fromCharacter = requireNotNull(update.getCharacter(from))
         val towardCharacter = requireNotNull(update.getCharacter(toward))
 
-        val newAttitudes = HashMap(fromCharacter.attitudeComponent.attitudes)
+        val updatedComponent = fromCharacter.attitudeComponent
+            .modifyAttitude(towardCharacter.id, type, modifier)
 
-        val oldValue = fromCharacter.attitudeComponent.getAttitude(towardCharacter.id, type)
-        val newValue = oldValue + modifier
-
-        newAttitudes[Pair(towardCharacter.id, type)] = newValue
-
-        val newFromCharacter = fromCharacter.copy(attitudeComponent = AttitudeComponent(newAttitudes))
+        val newFromCharacter = fromCharacter.copy(attitudeComponent = updatedComponent)
 
         val newUpdatedCharacters = update.updatedCharacters.copyAndAdd(from, newFromCharacter)
 

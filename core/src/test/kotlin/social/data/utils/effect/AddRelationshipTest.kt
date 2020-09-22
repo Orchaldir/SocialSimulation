@@ -31,7 +31,7 @@ internal class AddRelationshipTest {
     private val effect = AddRelationship(TARGET, SPEAKER, relationship)
 
     @Test
-    fun `Update existing attitude`() {
+    fun `Update a relationship`() {
         val context = Context(mapOf(SPEAKER to speaker, TARGET to target), relationshipManager = manager)
         val update = Update(context)
 

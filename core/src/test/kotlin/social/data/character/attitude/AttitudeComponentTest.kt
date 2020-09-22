@@ -16,9 +16,12 @@ internal class AttitudeComponentTest {
     private val id1: CharacterId = 1
     private val id2: CharacterId = 2
 
+    private val key0 = Pair(id0, type0)
+    private val key1 = Pair(id0, type1)
+
     private val component = AttitudeComponent(
-        Pair(id0, type0) to 1,
-        Pair(id0, type1) to 2,
+        key0 to 1,
+        key1 to 2,
         Pair(id1, type0) to 3
     )
 
@@ -70,6 +73,22 @@ internal class AttitudeComponentTest {
         @Test
         fun `Character has no attitude of that type`() {
             assertThat(component.getAttitude(id1, type1)).isEqualTo(type1.defaultValue)
+        }
+    }
+
+    @Nested
+    inner class ModifyAttitude {
+
+        @Test
+        fun `Modify existing attitude`() {
+            assertThat(AttitudeComponent(key0 to 4).modifyAttitude(id0, type0, 3))
+                .isEqualTo(AttitudeComponent(key0 to 7))
+        }
+
+        @Test
+        fun `Modify non-existing attitude uses the default value`() {
+            assertThat(AttitudeComponent(key0 to 4).modifyAttitude(id0, type1, 3))
+                .isEqualTo(AttitudeComponent(key0 to 4, key1 to 25))
         }
     }
 }
