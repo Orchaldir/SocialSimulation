@@ -22,4 +22,20 @@ data class RelationshipManager(private val relationships: Map<RelationshipKey, S
         return RelationshipManager(newRelationships)
     }
 
+    fun removeRelationship(id0: CharacterId, id1: CharacterId, relationship: Relationship): RelationshipManager {
+        val newRelationships = HashMap(relationships)
+
+        val key = createKey(id0, id1)
+        val oldValue = newRelationships[key] ?: return this
+        val newValue = oldValue - relationship
+
+        if (newValue.isEmpty()) {
+            newRelationships.remove(key)
+        } else {
+            newRelationships[key] = newValue
+        }
+
+        return RelationshipManager(newRelationships)
+    }
+
 }

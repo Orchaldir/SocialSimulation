@@ -22,9 +22,12 @@ internal class RelationshipManagerTest {
     private val relationshipsZeroToOne = setOf(relationship0, relationship1)
     private val relationshipsZeroToTwo = setOf(relationship2)
 
+    private val key01 = createKey(id0, id1)
+    private val key02 = createKey(id0, id2)
+
     private val manager = RelationshipManager(
-        createKey(id0, id1) to relationshipsZeroToOne,
-        createKey(id0, id2) to relationshipsZeroToTwo,
+        key01 to relationshipsZeroToOne,
+        key02 to relationshipsZeroToTwo,
     )
 
     @Nested
@@ -88,7 +91,7 @@ internal class RelationshipManagerTest {
     @Nested
     inner class AddRelationship {
 
-        private val newManager = RelationshipManager(createKey(id0, id1) to setOf(relationship2))
+        private val newManager = RelationshipManager(key01 to setOf(relationship2))
 
         @Test
         fun `Add a new relationship`() {
@@ -99,9 +102,47 @@ internal class RelationshipManagerTest {
         }
 
         @Test
+        fun `Add another relationship between 2 characters`() {
+            assertThat(newManager.addRelationship(id0, id1, relationship0))
+                .isEqualTo(RelationshipManager(key01 to setOf(relationship0, relationship2)))
+        }
+
+        @Test
+        fun `Add a relationship between other characters`() {
+            assertThat(newManager.addRelationship(id0, id2, relationship0))
+                .isEqualTo(RelationshipManager(key01 to setOf(relationship2), key02 to setOf(relationship0)))
+        }
+
+        @Test
         fun `Add an existing relationship`() {
             assertThat(newManager.addRelationship(id0, id1, relationship2)).isEqualTo(newManager)
             assertThat(newManager.addRelationship(id1, id0, relationship2)).isEqualTo(newManager)
+        }
+    }
+
+    @Nested
+    inner class RemoveRelationship {
+
+        @Test
+        fun `Remove a non-existing relationship`() {
+            val manager = RelationshipManager()
+
+            assertThat(manager.removeRelationship(id0, id1, relationship2)).isEqualTo(manager)
+        }
+
+        @Test
+        fun `Remove a relationship between 2 characters`() {
+            val input = RelationshipManager(key01 to setOf(relationship0, relationship2))
+            val output = RelationshipManager(key01 to setOf(relationship0))
+
+            assertThat(input.removeRelationship(id1, id0, relationship2)).isEqualTo(output)
+        }
+
+        @Test
+        fun `Remove the last relationship between 2 characters`() {
+            val manager = RelationshipManager(key01 to setOf(relationship2))
+
+            assertThat(manager.removeRelationship(id0, id1, relationship2)).isEqualTo(RelationshipManager())
         }
     }
 
