@@ -15,7 +15,7 @@ import social.data.utils.CharacterRole.TARGET
 import social.data.utils.Context
 import social.data.utils.Update
 
-internal class AddRelationshipTest {
+internal class RemoveRelationshipTest {
 
     private val speakerId: CharacterId = 0
     private val targetId: CharacterId = 1
@@ -28,14 +28,14 @@ internal class AddRelationshipTest {
     private val speaker = Character(speakerId, AttitudeComponent())
     private val target = Character(targetId, AttitudeComponent())
 
-    private val effect = AddRelationship(TARGET, SPEAKER, relationship)
+    private val effect = RemoveRelationship(TARGET, SPEAKER, relationship)
 
     @Test
-    fun `Add a relationship`() {
+    fun `Remove a relationship`() {
         val context = Context(mapOf(SPEAKER to speaker, TARGET to target), relationshipManager = manager)
         val update = Update(context)
 
-        every { manager.addRelationship(targetId, speakerId, relationship) } returns updatedManager
+        every { manager.removeRelationship(targetId, speakerId, relationship) } returns updatedManager
 
         assertThat(effect.applyTo(update)).isEqualTo(Update(context, updatedRelationshipManager = updatedManager))
     }
