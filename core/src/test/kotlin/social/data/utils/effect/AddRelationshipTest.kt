@@ -7,7 +7,6 @@ import io.mockk.mockk
 import org.junit.jupiter.api.Test
 import social.data.character.Character
 import social.data.character.CharacterId
-import social.data.character.attitude.AttitudeComponent
 import social.data.character.relationship.Relationship
 import social.data.character.relationship.RelationshipManager
 import social.data.utils.CharacterRole.SPEAKER
@@ -25,8 +24,8 @@ internal class AddRelationshipTest {
     private val manager = mockk<RelationshipManager>()
     private val updatedManager = mockk<RelationshipManager>()
 
-    private val speaker = Character(speakerId, AttitudeComponent())
-    private val target = Character(targetId, AttitudeComponent())
+    private val speaker = Character(speakerId)
+    private val target = Character(targetId)
 
     private val effect = AddRelationship(TARGET, SPEAKER, relationship)
 
