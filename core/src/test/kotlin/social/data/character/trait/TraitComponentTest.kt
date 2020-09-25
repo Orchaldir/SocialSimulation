@@ -10,7 +10,7 @@ internal class TraitComponentTest {
     private val trait1 = Trait("trait1")
     private val trait2 = Trait("trait2")
 
-    private val component = TraitComponent(setOf(trait0, trait1))
+    private val component = TraitComponent(trait0, trait1)
 
     @Test
     fun `Check if a character has a trait`() {
