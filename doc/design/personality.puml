@@ -4,13 +4,13 @@ hide empty members
 
 package character {
 
-package personality {
+package trait {
 
 class Trait {
   String name
 }
 
-class Personality {
+class TraitComponent {
   bool hasTrait(Trait trait)
 }
 
@@ -21,7 +21,7 @@ class Character
 
 }
 
-Personality "1" *-- "*"  Trait
-Character *--  Personality
+TraitComponent "1" *-- "*"  Trait
+Character *--  TraitComponent
 
 @enduml
