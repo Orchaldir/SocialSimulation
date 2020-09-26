@@ -13,6 +13,7 @@ import social.data.utils.CharacterRole.SPEAKER
 import social.data.utils.CharacterRole.TARGET
 import social.data.utils.Context
 import social.data.utils.Update
+import kotlin.test.assertFailsWith
 
 internal class ModifyAttitudeTest {
 
@@ -39,5 +40,19 @@ internal class ModifyAttitudeTest {
 
         assertThat(effect.applyTo(update))
             .isEqualTo(Update(context, updatedCharacters = mapOf(TARGET to Character(targetId, attitudes2))))
+    }
+
+    @Test
+    fun `Role0 not available`() {
+        val update = Update(Context(mapOf(SPEAKER to speaker)))
+
+        assertFailsWith<IllegalArgumentException> { effect.applyTo(update) }
+    }
+
+    @Test
+    fun `Role1 not available`() {
+        val update = Update(Context(mapOf(TARGET to target)))
+
+        assertFailsWith<IllegalArgumentException> { effect.applyTo(update) }
     }
 }
