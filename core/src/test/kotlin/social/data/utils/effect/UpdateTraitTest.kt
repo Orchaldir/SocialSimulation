@@ -9,8 +9,10 @@ import social.data.character.Character
 import social.data.character.trait.Trait
 import social.data.character.trait.TraitComponent
 import social.data.utils.CharacterRole.SPEAKER
+import social.data.utils.CharacterRole.TARGET
 import social.data.utils.Context
 import social.data.utils.Update
+import kotlin.test.assertFailsWith
 
 internal class UpdateTraitTest {
 
@@ -37,6 +39,13 @@ internal class UpdateTraitTest {
                 mapOf(SPEAKER to Character(id, traitComponent = component1))
             )
         )
+    }
+
+    @Test
+    fun `Role not available`() {
+        val effect = createAddTrait(TARGET, trait)
+
+        assertFailsWith<IllegalArgumentException> { effect.applyTo(update) }
     }
 
 }
