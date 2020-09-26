@@ -22,3 +22,14 @@ tasks.test {
     }
     finalizedBy(tasks.jacocoTestReport)
 }
+
+tasks.jacocoTestReport {
+    // Adjust the output of the test report
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+        xml.destination = file("${buildDir}/reports/jacoco.xml")
+    }
+    dependsOn(tasks.test) // tests are required to run before generating the report
+}
