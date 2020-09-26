@@ -2,7 +2,7 @@ package social.data.utils.condition
 
 import social.data.utils.Context
 
-data class NotCondition(val condition: Condition) : Condition {
+data class NotCondition(private val condition: Condition) : Condition {
 
     override fun evaluate(context: Context) = !condition.evaluate(context)
 

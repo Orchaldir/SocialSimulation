@@ -9,8 +9,8 @@ import social.data.utils.Update
 import social.data.utils.copyAndAdd
 
 data class UpdateTrait(
-    val role: CharacterRole,
-    val updater: TraitUpdater,
+    private val role: CharacterRole,
+    private val updater: TraitUpdater,
 ) : Effect {
 
     override fun applyTo(update: Update): Update {

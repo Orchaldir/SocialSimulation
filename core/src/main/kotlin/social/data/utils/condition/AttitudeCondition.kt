@@ -5,10 +5,10 @@ import social.data.utils.CharacterRole
 import social.data.utils.Context
 
 data class AttitudeCondition(
-    val from: CharacterRole,
-    val toward: CharacterRole,
-    val type: AttitudeType,
-    val threshold: Int
+    private val from: CharacterRole,
+    private val toward: CharacterRole,
+    private val type: AttitudeType,
+    private val threshold: Int
 ) : Condition {
 
     override fun evaluate(context: Context): Boolean {

@@ -2,7 +2,7 @@ package social.data.utils.condition
 
 import social.data.utils.Context
 
-data class AndCondition(val conditions: List<Condition>) : Condition {
+data class AndCondition(private val conditions: List<Condition>) : Condition {
 
     override fun evaluate(context: Context): Boolean {
         conditions.forEach {

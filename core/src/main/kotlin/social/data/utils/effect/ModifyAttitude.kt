@@ -6,10 +6,10 @@ import social.data.utils.Update
 import social.data.utils.copyAndAdd
 
 data class ModifyAttitude(
-    val from: CharacterRole,
-    val toward: CharacterRole,
-    val type: AttitudeType,
-    val modifier: Int,
+    private val from: CharacterRole,
+    private val toward: CharacterRole,
+    private val type: AttitudeType,
+    private val modifier: Int,
 ) : Effect {
 
     override fun applyTo(update: Update): Update {

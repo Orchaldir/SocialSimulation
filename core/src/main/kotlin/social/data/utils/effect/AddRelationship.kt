@@ -5,9 +5,9 @@ import social.data.utils.CharacterRole
 import social.data.utils.Update
 
 data class AddRelationship(
-    val role0: CharacterRole,
-    val role1: CharacterRole,
-    val relationship: Relationship,
+    private val role0: CharacterRole,
+    private val role1: CharacterRole,
+    private val relationship: Relationship,
 ) : Effect {
 
     override fun applyTo(update: Update): Update {
