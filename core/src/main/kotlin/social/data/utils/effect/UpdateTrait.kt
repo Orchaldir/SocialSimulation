@@ -18,7 +18,7 @@ data class UpdateTrait(
 
         val updatedComponent = character.traitComponent.update(updater)
         val updatedCharacter = character.copy(traitComponent = updatedComponent)
-        val updatedCharacters = update.updatedCharacters.copyAndAdd(role, updatedCharacter)
+        val updatedCharacters = update.getUpdatedCharacters().copyAndAdd(role, updatedCharacter)
 
         return update.copy(updatedCharacters = updatedCharacters)
     }

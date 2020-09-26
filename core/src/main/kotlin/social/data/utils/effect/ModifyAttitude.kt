@@ -21,7 +21,7 @@ data class ModifyAttitude(
 
         val newFromCharacter = fromCharacter.copy(attitudeComponent = updatedComponent)
 
-        val newUpdatedCharacters = update.updatedCharacters.copyAndAdd(from, newFromCharacter)
+        val newUpdatedCharacters = update.getUpdatedCharacters().copyAndAdd(from, newFromCharacter)
 
         return update.copy(updatedCharacters = newUpdatedCharacters)
     }

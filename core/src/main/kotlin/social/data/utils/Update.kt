@@ -4,10 +4,12 @@ import social.data.character.Character
 import social.data.character.relationship.RelationshipManager
 
 data class Update(
-    val context: Context,
-    val updatedCharacters: Map<CharacterRole, Character> = emptyMap(),
+    private val context: Context,
+    private val updatedCharacters: Map<CharacterRole, Character> = emptyMap(),
     private val updatedRelationshipManager: RelationshipManager? = null,
 ) {
+
+    fun getUpdatedCharacters() = updatedCharacters
 
     fun getCharacter(role: CharacterRole) = updatedCharacters.getOrElse(role) { context.roles[role] }
 
