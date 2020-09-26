@@ -14,3 +14,9 @@ data class Update(
     fun getRelationshipManager() = updatedRelationshipManager ?: context.relationshipManager
 
 }
+
+fun <K, V> Map<K, V>.copyAndAdd(key: K, value: V): Map<K, V> {
+    val newMap = HashMap(this)
+    newMap[key] = value
+    return newMap
+}

@@ -3,12 +3,7 @@ package social.data.utils.effect
 import social.data.character.attitude.AttitudeType
 import social.data.utils.CharacterRole
 import social.data.utils.Update
-
-private fun <K, V> Map<K, V>.copyAndAdd(key: K, value: V): Map<K, V> {
-    val newMap = HashMap(this)
-    newMap[key] = value
-    return newMap
-}
+import social.data.utils.copyAndAdd
 
 data class ModifyAttitude(
     val from: CharacterRole,
